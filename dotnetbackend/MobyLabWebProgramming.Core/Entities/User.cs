@@ -8,10 +8,14 @@ namespace MobyLabWebProgramming.Core.Entities;
 public class User : BaseEntity
 {
     public string Name { get; set; } = default!;
+    /*public string Surname { get; set; } = default!;*/
     public string Email { get; set; } = default!;
     public string Password { get; set; } = default!;
+    /*public string Phone { get; set; } = default!;*/
     public UserRoleEnum Role { get; set; } = default!;
 
+    /*public ICollection<Order> Orders { get; set; } = default!;
+    public ICollection<Address> Addresses { get; set; } = default!;*/
     /// <summary>
     /// References to other entities such as this are used to automatically fetch correlated data, this is called a navigation property.
     /// Collection such as this can be used for Many-To-One or Many-To-Many relations.

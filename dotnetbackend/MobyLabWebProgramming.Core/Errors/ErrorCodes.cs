@@ -13,6 +13,7 @@ public enum ErrorCodes
     EntityNotFound,
     PhysicalFileNotFound,
     UserAlreadyExists,
+    AuthorAlreadyExists,
     WrongPassword,
     CannotAdd,
     CannotUpdate,
