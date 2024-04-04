@@ -1,10 +1,7 @@
-﻿namespace MobyLabWebProgramming.Core.Entities;
-
-public class Publisher : BaseEntity
+﻿namespace MobyLabWebProgramming.Core.DataTransferObjects;
+public class PublisherAddDTO
 {
     public string Name { get; set; } = default!;
     public string Address { get; set; } = default!;
     public string Phone { get; set; } = default!;
-
-    public ICollection<Book> Books { get; set; } = default!;
 }

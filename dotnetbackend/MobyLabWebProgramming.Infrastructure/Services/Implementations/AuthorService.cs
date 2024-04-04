@@ -63,7 +63,7 @@ public class AuthorService : IAuthorService
 
     public async Task<ServiceResponse> UpdateAuthor(AuthorUpdateDTO author, UserDTO? requestingUser = default, CancellationToken cancellationToken = default)
     {
-        if (requestingUser != null && requestingUser.Role == UserRoleEnum.Admin)
+        if (requestingUser != null && requestingUser.Role != UserRoleEnum.Admin)
         {
             return ServiceResponse.FromError(new(HttpStatusCode.Forbidden, "Only the admin can update the author!", ErrorCodes.CannotUpdate));
         }
@@ -82,7 +82,7 @@ public class AuthorService : IAuthorService
     }
     public async Task<ServiceResponse> DeleteAuthor(Guid id, UserDTO? requestingUser = default, CancellationToken cancellationToken = default)
     {
-        if (requestingUser != null && requestingUser.Role == UserRoleEnum.Admin)
+        if (requestingUser != null && requestingUser.Role != UserRoleEnum.Admin)
         {
             return ServiceResponse.FromError(new(HttpStatusCode.Forbidden, "Only the admin can delete the author!", ErrorCodes.CannotDelete));
         }

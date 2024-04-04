@@ -14,6 +14,8 @@ public enum ErrorCodes
     PhysicalFileNotFound,
     UserAlreadyExists,
     AuthorAlreadyExists,
+    PublisherAlreadyExists,
+    BookAlreadyExists,
     WrongPassword,
     CannotAdd,
     CannotUpdate,
