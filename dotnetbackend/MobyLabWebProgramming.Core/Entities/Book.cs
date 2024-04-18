@@ -13,5 +13,7 @@ public class Book : BaseEntity {
     public Publisher Publisher { get; set; } = default!;
     public Guid PublisherId { get; set; }
     public BookGenreEnum Genre { get; set; } = default!;
+
+    public ICollection<Order> Orders { get; set; } = default!;
 }
 

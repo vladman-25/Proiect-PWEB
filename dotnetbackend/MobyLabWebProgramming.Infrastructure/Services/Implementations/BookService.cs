@@ -21,7 +21,8 @@ public class BookService : IBookService
     {
         _repository = repository;
     }
-
+    public async Task<ServiceResponse<int>> GetBookCount(CancellationToken cancellationToken = default) =>
+       ServiceResponse<int>.ForSuccess(await _repository.GetCountAsync<Book>(cancellationToken)); // Get the count of all user entities in the database.
     public async Task<ServiceResponse<BookDTO>> GetBook(Guid id, CancellationToken cancellationToken = default)
     {
         var result = await _repository.GetAsync(new BookProjectionSpec(id), cancellationToken); // Get a user using a specification on the repository.

@@ -21,6 +21,8 @@ public class AuthorService : IAuthorService
         _repository = repository;
     }
 
+    public async Task<ServiceResponse<int>> GetAuthorCount(CancellationToken cancellationToken = default) =>
+       ServiceResponse<int>.ForSuccess(await _repository.GetCountAsync<Author>(cancellationToken)); // Get the count of all user entities in the database.
     public async Task<ServiceResponse<AuthorDTO>> GetAuthor(Guid id, CancellationToken cancellationToken = default)
     {
         var result = await _repository.GetAsync(new AuthorProjectionSpec(id), cancellationToken); // Get a user using a specification on the repository.

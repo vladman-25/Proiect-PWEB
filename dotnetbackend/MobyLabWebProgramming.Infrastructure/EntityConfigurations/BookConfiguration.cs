@@ -17,7 +17,7 @@ using MobyLabWebProgramming.Core.Entities;
 
 namespace MobyLabWebProgramming.Infrastructure.EntityConfigurations;
 
-public class BoookConfiguration : IEntityTypeConfiguration<Book>
+public class BookConfiguration : IEntityTypeConfiguration<Book>
 {
     public void Configure(EntityTypeBuilder<Book> builder)
     {
@@ -33,8 +33,8 @@ public class BoookConfiguration : IEntityTypeConfiguration<Book>
         builder.Property(e => e.Price)
            .IsRequired();
 
-        /*builder.Property(e => e.Genres)
-           .IsRequired();*/
+        builder.Property(e => e.Genre)
+           .IsRequired();
         builder.Property(e => e.CreatedAt)
             .IsRequired();
         builder.Property(e => e.UpdatedAt)

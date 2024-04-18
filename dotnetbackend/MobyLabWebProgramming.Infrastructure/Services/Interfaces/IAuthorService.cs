@@ -5,6 +5,7 @@ namespace MobyLabWebProgramming.Infrastructure.Services.Interfaces;
 
 public interface IAuthorService
 {
+    public Task<ServiceResponse<int>> GetAuthorCount(CancellationToken cancellationToken = default);
     public Task<ServiceResponse<AuthorDTO>> GetAuthor(Guid id, CancellationToken cancellationToken = default);
     public Task<ServiceResponse<PagedResponse<AuthorDTO>>> GetAuthors(PaginationSearchQueryParams pagination, CancellationToken cancellationToken = default);
     public Task<ServiceResponse> AddAuthor(AuthorAddDTO author, UserDTO? requestingUser = default, CancellationToken cancellationToken = default);

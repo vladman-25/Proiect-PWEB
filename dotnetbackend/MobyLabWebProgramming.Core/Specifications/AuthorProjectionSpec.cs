@@ -35,6 +35,6 @@ public sealed class AuthorProjectionSpec : BaseSpec<AuthorProjectionSpec, Author
 
         var searchExpr = $"%{search.Replace(" ", "%")}%";
 
-        Query.Where(e => EF.Functions.ILike(e.Name, searchExpr));
+        Query.Where(e => EF.Functions.ILike(e.Surname, searchExpr));
     }
 }

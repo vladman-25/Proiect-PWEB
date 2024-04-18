@@ -5,6 +5,7 @@ namespace MobyLabWebProgramming.Infrastructure.Services.Interfaces;
 
 public interface IBookService
 {
+    public Task<ServiceResponse<int>> GetBookCount(CancellationToken cancellationToken = default);
     public Task<ServiceResponse<BookDTO>> GetBook(Guid id, CancellationToken cancellationToken = default);
     public Task<ServiceResponse<PagedResponse<BookDTO>>> GetBooks(PaginationSearchQueryParams pagination, CancellationToken cancellationToken = default);
     public Task<ServiceResponse> AddBook(BookAddDTO book, UserDTO? requestingUser = default, CancellationToken cancellationToken = default);

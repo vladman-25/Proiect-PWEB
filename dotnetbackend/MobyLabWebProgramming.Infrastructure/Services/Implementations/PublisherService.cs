@@ -19,7 +19,8 @@ public class PublisherService : IPublisherService
     {
         _repository = repository;
     }
-
+    public async Task<ServiceResponse<int>> GetPublisherCount(CancellationToken cancellationToken = default) =>
+       ServiceResponse<int>.ForSuccess(await _repository.GetCountAsync<Publisher>(cancellationToken)); // Get the count of all user entities in the database.
     public async Task<ServiceResponse<PublisherDTO>> GetPublisher(Guid id, CancellationToken cancellationToken = default)
     {
         var result = await _repository.GetAsync(new PublisherProjectionSpec(id), cancellationToken); // Get a user using a specification on the repository.

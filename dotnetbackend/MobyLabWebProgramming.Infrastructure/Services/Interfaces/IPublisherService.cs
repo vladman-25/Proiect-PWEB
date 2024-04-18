@@ -5,6 +5,7 @@ namespace MobyLabWebProgramming.Infrastructure.Services.Interfaces;
 
 public interface IPublisherService
 {
+    public Task<ServiceResponse<int>> GetPublisherCount(CancellationToken cancellationToken = default);
     public Task<ServiceResponse<PublisherDTO>> GetPublisher(Guid id, CancellationToken cancellationToken = default);
     public Task<ServiceResponse<PagedResponse<PublisherDTO>>> GetPublishers(PaginationSearchQueryParams pagination, CancellationToken cancellationToken = default);
     public Task<ServiceResponse> AddPublisher(PublisherAddDTO publisher, UserDTO? requestingUser = default, CancellationToken cancellationToken = default);
