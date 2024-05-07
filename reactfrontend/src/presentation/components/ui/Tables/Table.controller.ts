@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 /**
  * This is the pagination controller hook that can be used to manage the state of a table.
  */
-export const useTableController = (onPaginationChange: (page: number, pageSize: number) => void, defaultPageSize?: number) => {
+export const useTableController = (onPaginationChange: (page: number, pageSize: number) => void, onSearchChange: (searchTerm: string) => void, defaultPageSize?: number) => {
     const { formatMessage } = useIntl();
     const handleChangePage = useCallback(( // Create a callback to listen on changes of the table page.
         _event: MouseEvent<HTMLButtonElement> | null,
@@ -20,6 +20,13 @@ export const useTableController = (onPaginationChange: (page: number, pageSize: 
         onPaginationChange(1, parseInt(event.target.value, 10)); // Reset the current page to 1 on page size change to avoid overflow.
     }, [onPaginationChange]);
 
+    const handleSearch = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+          onSearchChange(event.target.value);
+        },
+        [onSearchChange]
+      );
+
     const labelDisplay = useCallback(({ to, from, count }: LabelDisplayedRowsArgs) => { // Create a callback to display the paging labels with translations.
         return count !== -1 ?
             formatMessage({ id: "labels.paginationLabelNormal" }, { to, from, count }) :
@@ -29,6 +36,7 @@ export const useTableController = (onPaginationChange: (page: number, pageSize: 
     return {
         labelDisplay,
         handleChangePage,
+        handleSearch,
         handleChangePageSize
     };
 }
