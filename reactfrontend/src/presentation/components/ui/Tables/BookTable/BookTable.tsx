@@ -9,6 +9,7 @@ import { BookAddDialog } from "../../Dialogs/BookAddDialog";
 import { BookUpdateDialog } from "../../Dialogs/BookUpdateDialog";
 import { useAppSelector } from "@application/store";
 import SearchIcon from '@mui/icons-material/Search';
+import { ConfirmDeleteModal } from "../../ConfirmDeleteModal";
 /**
  * This hook returns a header for the table with translated columns.
  */
@@ -93,9 +94,7 @@ export const BookTable = () => {
                         rowValues?.map(({ data, entry }, rowIndex) => <TableRow key={`row_${rowIndex + 1}`}>
                             {data.map((keyValue, index) => <TableCell key={`cell_${rowIndex + 1}_${index + 1}`}>{keyValue.value}</TableCell>)} {/* Add the row values. */}
                             <TableCell> {/* Add other cells like action buttons. */}
-                                {entry.id !== ownUserId && <IconButton color="error" onClick={() => remove(entry.id || '')}>
-                                    <DeleteIcon color="error" fontSize='small' />
-                                </IconButton>}
+                                {entry.id !== ownUserId && <ConfirmDeleteModal onClickAfter={() => remove(entry.id || '')} />}
                                 {entry.id !== ownUserId && <BookUpdateDialog {...entry}/>}
                             </TableCell>
                         </TableRow>)
