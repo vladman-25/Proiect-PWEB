@@ -21,16 +21,16 @@ export const useTableController = (onPaginationChange: (page: number, pageSize: 
     }, [onPaginationChange]);
 
     const handleSearch = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-          onSearchChange(event.target.value);
-        },
-        [onSearchChange]
-      );
+            (event: ChangeEvent<HTMLInputElement>) => {
+                onSearchChange(event.target.value);
+            },
+            [onSearchChange]
+        );
 
-    const labelDisplay = useCallback(({ to, from, count }: LabelDisplayedRowsArgs) => { // Create a callback to display the paging labels with translations.
-        return count !== -1 ?
-            formatMessage({ id: "labels.paginationLabelNormal" }, { to, from, count }) :
-            formatMessage({ id: "labels.paginationLabelOverflow" }, { to, from });
+    const labelDisplay: (args: LabelDisplayedRowsArgs) => string = useCallback(({ to, from, count }: LabelDisplayedRowsArgs) => { // Create a callback to display the paging labels with translations.
+            return count !== -1 ?
+                    formatMessage({ id: "labels.paginationLabelNormal" }, { to, from, count }) :
+                    formatMessage({ id: "labels.paginationLabelOverflow" }, { to, from });
     }, [formatMessage]);
 
     return {

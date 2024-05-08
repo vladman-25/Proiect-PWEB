@@ -1,5 +1,5 @@
 import { useAppSelector } from "@application/store";
-import { ApiBookGetPageGetRequest, BookAddDTO, BookApi } from "../client";
+import { ApiBookGetPageGetRequest, BookAddDTO, BookUpdateDTO , BookApi } from "../client";
 import { getAuthenticationConfiguration } from "@infrastructure/utils/userUtils";
 
 /**
@@ -9,6 +9,7 @@ const getBooksQueryKey = "getBooksQuery";
 const getBookQueryKey = "getBookQuery";
 const addBookMutationKey = "addBookMutation";
 const deleteBookMutationKey = "deleteBookMutation";
+const updateBookMutationKey = "updateBookMutation";
 
 /**
  * Returns the an object with the callbacks that can be used for the React Query API, in this case to manage the user API.
@@ -21,6 +22,7 @@ export const useBookApi = () => {
     const getBook = (id: string) => new BookApi(config).apiBookGetByIdIdGet({ id });
     const addBook = (book: BookAddDTO) => new BookApi(config).apiBookAddPost({ bookAddDTO: book });
     const deleteBook = (id: string) => new BookApi(config).apiBookDeleteIdDelete({ id });
+    const updateBook = (Book: BookUpdateDTO) => new BookApi(config).apiBookUpdatePut({ bookUpdateDTO: Book });
 
     return {
         getBooks: { // Return the query object.
@@ -38,6 +40,10 @@ export const useBookApi = () => {
         deleteBook: {
             key: deleteBookMutationKey,
             mutation: deleteBook
+        },
+        updateBook: {
+            key: updateBookMutationKey,
+            mutation: updateBook
         }
     }
 }

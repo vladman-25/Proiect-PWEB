@@ -47,6 +47,13 @@ export const Navbar = () => {
               <HomeIcon style={{ color: 'white' }} fontSize='large' />
             </Link>
           </Grid>
+          <Grid container item direction="column" xs={1}>
+            <Button color="inherit">
+              <Link style={{ color: 'white' }} to={AppRoute.Plp}>
+                PLP
+              </Link>
+            </Button>
+          </Grid>
           <Grid container item direction="column" xs={8}>
             {isAdmin && <Grid // If the user is logged in and it is an admin they can have new menu items shown.
               container
@@ -66,8 +73,28 @@ export const Navbar = () => {
               </Grid>
               <Grid container item direction="column" xs={1}>
                 <Button color="inherit">
-                  <Link style={{ color: 'white' }} to={AppRoute.UserFiles}>
-                    {formatMessage({ id: "globals.files" })}
+                  <Link style={{ color: 'white' }} to={AppRoute.Authors}>
+                    Authors
+                  </Link>
+                </Button>
+              </Grid>
+              <Grid container item direction="column" xs={1}>
+                <Button color="inherit">
+                  <Link style={{ color: 'white' }} to={AppRoute.Books}>
+                    Books
+                  </Link>
+                </Button>
+              </Grid>
+              <Grid container item direction="column" xs={1}>
+                <Button color="inherit">
+                  <Link style={{ color: 'white' }} to={AppRoute.Publishers}>
+                    Publishers
+                  </Link>
+                </Button>
+              </Grid><Grid container item direction="column" xs={1}>
+                <Button color="inherit">
+                  <Link style={{ color: 'white' }} to={AppRoute.Addresss}>
+                    Addresss
                   </Link>
                 </Button>
               </Grid>

@@ -1,5 +1,5 @@
 import { useAppSelector } from "@application/store";
-import { ApiUserGetPageGetRequest, UserAddDTO, UserApi } from "../client";
+import { ApiUserGetPageGetRequest, UserAddDTO, UserUpdateDTO , UserApi } from "../client";
 import { getAuthenticationConfiguration } from "@infrastructure/utils/userUtils";
 
 /**
@@ -9,7 +9,7 @@ const getUsersQueryKey = "getUsersQuery";
 const getUserQueryKey = "getUserQuery";
 const addUserMutationKey = "addUserMutation";
 const deleteUserMutationKey = "deleteUserMutation";
-
+const updateUserMutationKey = "updateUserMutation";
 /**
  * Returns the an object with the callbacks that can be used for the React Query API, in this case to manage the user API.
  */
@@ -21,6 +21,7 @@ export const useUserApi = () => {
     const getUser = (id: string) => new UserApi(config).apiUserGetByIdIdGet({ id });
     const addUser = (user: UserAddDTO) => new UserApi(config).apiUserAddPost({ userAddDTO: user });
     const deleteUser = (id: string) => new UserApi(config).apiUserDeleteIdDelete({ id });
+    const updateUser = (User: UserUpdateDTO) => new UserApi(config).apiUserUpdatePut({ userUpdateDTO: User });
 
     return {
         getUsers: { // Return the query object.
@@ -38,6 +39,10 @@ export const useUserApi = () => {
         deleteUser: {
             key: deleteUserMutationKey,
             mutation: deleteUser
+        },
+        updateUser: {
+            key: updateUserMutationKey,
+            mutation: updateUser
         }
     }
 }

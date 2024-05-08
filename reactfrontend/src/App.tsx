@@ -25,6 +25,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { AuthorsPage } from "@presentation/pages/AuthorsPage";
+import { BooksPage } from "@presentation/pages/BooksPage";
+import { PublishersPage } from "@presentation/pages/PublishersPage";
+import { AddresssPage } from "@presentation/pages/AddresssPage";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -64,7 +68,10 @@ export function App() {
         <Route path={AppRoute.Plp} element={<PLP />} />
         <Route path={AppRoute.Pdp} element={<PDP />} />
         {isAdmin && <Route path={AppRoute.Users} element={<UsersPage />} />} {/* If the user doesn't have the right role this route shouldn't be used. */}
-        {isAdmin && <Route path={AppRoute.UserFiles} element={<UserFilesPage />} />}
+        {isAdmin && <Route path={AppRoute.Authors} element={<AuthorsPage />} />}
+        {isAdmin && <Route path={AppRoute.Books} element={<BooksPage />} />}
+        {isAdmin && <Route path={AppRoute.Publishers} element={<PublishersPage />} />}
+        {isAdmin && <Route path={AppRoute.Addresss} element={<AddresssPage />} />}
       </Routes>
       <Fab
         color="primary"

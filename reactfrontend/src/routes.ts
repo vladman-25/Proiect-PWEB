@@ -5,7 +5,10 @@ export enum AppRoute {
     Index = "/",
     Login = "/login",
     Users = "/users",
-    UserFiles = "/user-files",
+    Authors = "/authors",
+    Books = "/books",
+    Publishers = "/publishers",
+    Addresss = "/addresss",
     Plp = "/plp",
     Pdp = "/pdp/:id",
 }
