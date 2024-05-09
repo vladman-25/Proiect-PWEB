@@ -4,6 +4,7 @@ using MobyLabWebProgramming.Core.Responses;
 using MobyLabWebProgramming.Infrastructure.Authorization;
 using MobyLabWebProgramming.Infrastructure.Extensions;
 using MobyLabWebProgramming.Infrastructure.Services.Interfaces;
+using Serilog;
 
 namespace MobyLabWebProgramming.Backend.Controllers;
 
@@ -28,5 +29,14 @@ public class AuthorizationController : ControllerBase // The controller must inh
     public async Task<ActionResult<RequestResponse<LoginResponseDTO>>> Login([FromBody] LoginDTO login) // The FromBody attribute indicates that the parameter is deserialized from the JSON body.
     {
         return this.FromServiceResponse(await _userService.Login(login with { Password = PasswordUtils.HashPassword(login.Password)})); // The "with" keyword works only with records and it creates another object instance with the updated properties. 
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<RequestResponse<LoginResponseDTO>>> Register([FromBody] RegisterDTO register) // The FromBody attribute indicates that the parameter is deserialized from the JSON body.
+    {
+        await _userService.Register(register with { Password = PasswordUtils.HashPassword(register.Password) });
+        LoginDTO login = new(register.Email, register.Password);
+        return this.FromServiceResponse(await _userService.Login(login with { Password = PasswordUtils.HashPassword(register.Password) }));
+        // The "with" keyword works only with records and it creates another object instance with the updated properties. 
     }
 }

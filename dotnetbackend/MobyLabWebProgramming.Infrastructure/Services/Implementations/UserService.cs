@@ -74,6 +74,40 @@ public class UserService : IUserService
         });
     }
 
+    public async Task<ServiceResponse<LoginResponseDTO>> Register(RegisterDTO register, CancellationToken cancellationToken = default)
+    {
+        var result = await _repository.GetAsync(new UserSpec(register.Email), cancellationToken);
+
+        if (result != null)
+        {
+            return ServiceResponse<LoginResponseDTO>.FromError(new(HttpStatusCode.Conflict, "The user already exists!", ErrorCodes.UserAlreadyExists));
+        }
+
+        User user = await _repository.AddAsync(new User
+        {
+            Email = register.Email,
+            Name = register.Name,
+            Role = UserRoleEnum.Client,
+            Password = register.Password
+        }, cancellationToken); // A new entity is created and persisted in the database.
+
+        UserDTO userDTO = new()
+        {
+            Id = user.Id,
+            Email = user.Email,
+            Name = user.Name,
+            Role = user.Role
+        };
+
+        await _mailService.SendMail(user.Email, "Welcome!", MailTemplates.UserAddTemplate(user.Name), true, "My App", cancellationToken); // You can send a notification on the user email. Change the email if you want.
+
+        return ServiceResponse<LoginResponseDTO>.ForSuccess(new()
+        {
+            User = userDTO,
+            Token = _loginService.GetToken(userDTO, DateTime.UtcNow, new(7, 0, 0, 0)) // Get a JWT for the user issued now and that expires in 7 days.
+        });
+    }
+
     public async Task<ServiceResponse<int>> GetUserCount(CancellationToken cancellationToken = default) => 
         ServiceResponse<int>.ForSuccess(await _repository.GetCountAsync<User>(cancellationToken)); // Get the count of all user entities in the database.
 

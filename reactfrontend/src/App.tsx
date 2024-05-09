@@ -4,6 +4,7 @@ import { AppIntlProvider } from "@presentation/components/ui/AppIntlProvider";
 import { ToastNotifier } from "@presentation/components/ui/ToastNotifier";
 import { HomePage } from "@presentation/pages/HomePage";
 import { LoginPage } from "@presentation/pages/LoginPage";
+import { RegisterPage } from "@presentation/pages/RegisterPage";
 import { PLP } from "@presentation/pages/PLP";
 import { PDP } from "@presentation/pages/PDP";
 import { UserFilesPage } from "@presentation/pages/UserFilesPage";
@@ -63,8 +64,9 @@ export function App() {
       <ToastNotifier />
       {/* This adds the routes and route mappings on the various components. */}
       <Routes>
-        <Route path={AppRoute.Index} element={<HomePage />} /> {/* Add a new route with a element as the page. */}
+        <Route path={AppRoute.Index} element={<PLP />} /> {/* Add a new route with a element as the page. */}
         <Route path={AppRoute.Login} element={<LoginPage />} />
+        <Route path={AppRoute.Register} element={<RegisterPage />} />
         <Route path={AppRoute.Plp} element={<PLP />} />
         <Route path={AppRoute.Pdp} element={<PDP />} />
         {isAdmin && <Route path={AppRoute.Users} element={<UsersPage />} />} {/* If the user doesn't have the right role this route shouldn't be used. */}

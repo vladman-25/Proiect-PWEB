@@ -43,6 +43,7 @@ export * from './PublisherDTOPagedResponse';
 export * from './PublisherDTOPagedResponseRequestResponse';
 export * from './PublisherDTORequestResponse';
 export * from './PublisherUpdateDTO';
+export * from './RegisterDTO';
 export * from './RequestResponse';
 export * from './User';
 export * from './UserAddDTO';

@@ -51,6 +51,7 @@ models/PublisherDTOPagedResponse.ts
 models/PublisherDTOPagedResponseRequestResponse.ts
 models/PublisherDTORequestResponse.ts
 models/PublisherUpdateDTO.ts
+models/RegisterDTO.ts
 models/RequestResponse.ts
 models/User.ts
 models/UserAddDTO.ts

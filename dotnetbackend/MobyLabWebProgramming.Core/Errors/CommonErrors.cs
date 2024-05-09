@@ -14,5 +14,6 @@ public static class CommonErrors
     public static ErrorMessage PublisherNotFound => new(HttpStatusCode.NotFound, "Publisher doesn't exist!", ErrorCodes.EntityNotFound);
     public static ErrorMessage BookNotFound => new(HttpStatusCode.NotFound, "Book doesn't exist!", ErrorCodes.EntityNotFound);
     public static ErrorMessage OrderNotFound => new(HttpStatusCode.NotFound, "Order doesn't exist!", ErrorCodes.EntityNotFound);
-    public static ErrorMessage AddressNotFound => new(HttpStatusCode.NotFound, "Address doesn't exist!", ErrorCodes.EntityNotFound);
+    public static ErrorMessage AddressNotFound => new(HttpStatusCode.NotFound, "Address doesn't exist!", ErrorCodes.UserAlreadyExists);
+    public static ErrorMessage EmailAlreadyUsed => new(HttpStatusCode.NotFound, "Email already in use!", ErrorCodes.EntityNotFound);
 }
