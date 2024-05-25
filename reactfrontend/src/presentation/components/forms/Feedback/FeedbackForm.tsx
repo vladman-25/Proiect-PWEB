@@ -112,10 +112,10 @@ export const FeedbackForm = (props: { onSubmit?: () => void }) => {
                             <FormLabel required>
                             What did you like
                             </FormLabel>
-                            <FormControlLabel control={<Checkbox />} label="Speed" />
-                            <FormControlLabel control={<Checkbox />} label="Responsive" />
-                            <FormControlLabel control={<Checkbox />} label="Accessible" />
-                            <FormControlLabel control={<Checkbox />} label="WebPages" />
+                            <FormControlLabel control={<Checkbox onChange={actions.handleCheckboxChange} value={"Speed"}/>} label="Speed" />
+                            <FormControlLabel control={<Checkbox onChange={actions.handleCheckboxChange} value={"Responsive"}/>} label="Responsive" />
+                            <FormControlLabel control={<Checkbox onChange={actions.handleCheckboxChange} value={"Accessible"}/>} label="Accessible" />
+                            <FormControlLabel control={<Checkbox onChange={actions.handleCheckboxChange} value={"WebPages"} />} label="WebPages" />
                             <FormHelperText
                                 hidden={isUndefined(state.errors.Likes)}
                             >

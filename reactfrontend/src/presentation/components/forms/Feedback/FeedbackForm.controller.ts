@@ -130,11 +130,20 @@ export const useFeedbackFormController = (onSubmit?: () => void): FeedbackFormCo
         });
     }, [setValue]);
 
-    const handleCheckboxChange = (value: FeedbackCheckboxEnum[]) => {
-        setValue("Likes", value, {
+    const handleCheckboxChange = useCallback((event: SelectChangeEvent<FeedbackCheckboxEnum[]>) => {
+        const likes = watch("Likes") as FeedbackCheckboxEnum[];
+        const selectedValue = event.target.value as FeedbackCheckboxEnum;
+
+        if (likes.includes(selectedValue)) {
+            setValue("Likes", likes.filter(like => like !== selectedValue), {
             shouldValidate: true
-        });
-    };
+            });
+        } else {
+            setValue("Likes", [...likes, selectedValue], {
+            shouldValidate: true
+            });
+        }
+    }, [setValue]);
 
     return {
         actions: { // Return any callbacks needed to interact with the form.

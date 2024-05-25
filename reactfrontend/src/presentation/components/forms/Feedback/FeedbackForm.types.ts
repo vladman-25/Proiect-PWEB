@@ -26,7 +26,7 @@ export type FeedbackFormActions = {
     handleSubmit: UseFormHandleSubmit<FeedbackFormModel>;
     submit: (body: FeedbackFormModel) => void;
     selectRole: (value: SelectChangeEvent<FeedbackSelectEnum>) => void;
-    handleCheckboxChange: (value: FeedbackCheckboxEnum[]) => void;
+    handleCheckboxChange: (value: SelectChangeEvent<FeedbackCheckboxEnum[]>) => void;
 };
 export type FeedbackFormComputed = {
     defaultValues: FeedbackFormModel,
