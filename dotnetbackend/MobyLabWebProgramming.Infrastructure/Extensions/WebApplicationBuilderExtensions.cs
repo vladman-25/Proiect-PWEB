@@ -179,7 +179,8 @@ public static class WebApplicationBuilderExtensions
             .AddTransient<IPublisherService, PublisherService>()
             .AddTransient<IBookService, BookService>()
             .AddTransient<IOrderService, OrderService>()
-            .AddTransient<IAddressService, AddressService>();
+            .AddTransient<IAddressService, AddressService>()
+            .AddTransient<IFeedbackService, FeedbackService>();
 
         return builder;
     }

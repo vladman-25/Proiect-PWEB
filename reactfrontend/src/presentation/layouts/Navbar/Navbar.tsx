@@ -54,6 +54,13 @@ export const Navbar = () => {
               </Link>
             </Button>
           </Grid>
+          <Grid container item direction="column" xs={1}>
+            <Button color="inherit">
+              <Link style={{ color: 'white' }} to={AppRoute.Feedback}>
+              Feedback
+              </Link>
+            </Button>
+          </Grid>
           <Grid container item direction="column" xs={8}>
             {isAdmin && <Grid // If the user is logged in and it is an admin they can have new menu items shown.
               container

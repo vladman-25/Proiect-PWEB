@@ -16,4 +16,5 @@ public static class CommonErrors
     public static ErrorMessage OrderNotFound => new(HttpStatusCode.NotFound, "Order doesn't exist!", ErrorCodes.EntityNotFound);
     public static ErrorMessage AddressNotFound => new(HttpStatusCode.NotFound, "Address doesn't exist!", ErrorCodes.UserAlreadyExists);
     public static ErrorMessage EmailAlreadyUsed => new(HttpStatusCode.NotFound, "Email already in use!", ErrorCodes.EntityNotFound);
+    public static ErrorMessage FeedbackNotFound => new(HttpStatusCode.NotFound, "Feedback Not Found", ErrorCodes.EntityNotFound);
 }

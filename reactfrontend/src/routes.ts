@@ -11,5 +11,6 @@ export enum AppRoute {
     Publishers = "/publishers",
     Addresss = "/addresss",
     Plp = "/plp",
+    Feedback = "/feedback",
     Pdp = "/pdp/:id",
 }

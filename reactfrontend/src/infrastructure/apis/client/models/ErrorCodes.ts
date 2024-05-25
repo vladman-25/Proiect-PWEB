@@ -30,7 +30,8 @@ export const ErrorCodes = {
     CannotAdd: 'CannotAdd',
     CannotUpdate: 'CannotUpdate',
     CannotDelete: 'CannotDelete',
-    MailSendFailed: 'MailSendFailed'
+    MailSendFailed: 'MailSendFailed',
+    FeedbackAlreadyExists: 'FeedbackAlreadyExists'
 } as const;
 export type ErrorCodes = typeof ErrorCodes[keyof typeof ErrorCodes];
 
